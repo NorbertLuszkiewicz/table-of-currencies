@@ -1,0 +1,25 @@
+.wrapper {
+  width: 900px;
+  max-width: 90%;
+  margin: 20px auto;
+}
+:host ::ng-deep {
+  .p-datepicker table td {
+    padding: 0;
+
+    & > span {
+      height: 32px;
+    }
+  }
+
+  .p-paginator {
+    .p-paginator-current {
+      margin-left: auto;
+    }
+  }
+
+  .table-header {
+    display: flex;
+    justify-content: space-between;
+  }
+}

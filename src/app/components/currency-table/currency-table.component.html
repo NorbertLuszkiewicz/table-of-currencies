@@ -1,0 +1,44 @@
+<div class="wrapper">
+  <p-table
+    styleClass="table"
+    [value]="currencies"
+    dataKey="id"
+    [rowHover]="true"
+    [rows]="10"
+    [rowsPerPageOptions]="[10, 25, 50]"
+    [showCurrentPageReport]="true"
+    [paginator]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [filterDelay]="0">
+    <ng-template pTemplate="caption">
+      <div class="table-header">
+        <p-button label="Clear" icon="pi pi-filter-slash" iconPos="left"></p-button>
+        <p-calendar
+          [(ngModel)]="currencyDate"
+          (onInput)="getCurrencyFromGivenDate()"
+          dateFormat="yy-mm-dd"
+          (onSelect)="getCurrencyFromGivenDate()"
+          [showIcon]="true"></p-calendar>
+      </div>
+    </ng-template>
+    <ng-template class="table" pTemplate="header">
+      <tr>
+        <th pSortableColumn="code">Symbol Waluty <p-sortIcon field="code"></p-sortIcon></th>
+        <th pSortableColumn="currency">Waluta <p-sortIcon field="currency"></p-sortIcon></th>
+        <th pSortableColumn="mid">Kurs Waluty <p-sortIcon field="mid"></p-sortIcon></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-currency>
+      <tr>
+        <td>{{ currency.code }}</td>
+        <td>{{ currency.currency }}</td>
+        <td>{{ currency.mid }}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="3">Niestety nie znaleźliśmy kursów walut pochodzących tego dnia.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
